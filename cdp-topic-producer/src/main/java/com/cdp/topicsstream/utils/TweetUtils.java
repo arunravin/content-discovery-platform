@@ -36,7 +36,6 @@ public class TweetUtils {
 		   List<String> lstUserMentions = getUSerMentionsandHashTag(tweetString,identifier);
 		  
 		   for (String userMention : lstUserMentions) {
-			   System.out.println("Inside Loop .. "+ userMention);
 			   tweetString = StringUtils.replace(tweetString, userMention, "");
 			}
 		   
@@ -59,11 +58,9 @@ public class TweetUtils {
 	    }
 	 
 	 
-	 
-	 
 	 public static void main(String ar[]) throws Exception{
 		 
-		 String strTweet =  "RT @delizalde: 7 Ways to Get a Product Management Job when You Lack Industry Experience https://t.co/rxb2gQdSQT #IoT #Prodmgmt #IIoT #Tech…";
+		 String strTweet =  "RT @arunravin: REST: Good Practices for API Design https://hakin9.org/rest-good-practices-for-api-design/ #Rest #API ";
 		 String cleanTweet = TweetUtils.removeUrl(strTweet);
 		 String twWithoutUSerMentions = TweetUtils.removeUserMentionsandHashTags(cleanTweet,"@");
 		 String twWithoutHashTags = TweetUtils.removeUserMentionsandHashTags(twWithoutUSerMentions,"#");
