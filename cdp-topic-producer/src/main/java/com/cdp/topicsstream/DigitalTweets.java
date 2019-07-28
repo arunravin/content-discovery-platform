@@ -13,6 +13,7 @@ import java.util.StringJoiner;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.cdp.topicsstream.utils.TweetUtils;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -69,6 +70,7 @@ public class DigitalTweets {
         /**ID
          * user
          * tweettext
+         * topictext
          * retweetcount
          * retweetfavouritecount
          * userlocation
@@ -92,9 +94,13 @@ public class DigitalTweets {
            
             if (status.getRetweetedStatus().getText() != null) {
             		newDigiTweets.put("tweettext", status.getRetweetedStatus().getText());
+            		 newDigiTweets.put("topictext",transTweetText(status.getRetweetedStatus().getText()) );
              } else {
             		newDigiTweets.put("tweettext", status.getText()); // Raw Tweet Textx
+            		newDigiTweets.put("topictext",transTweetText(status.getText()));
              }
+            
+           
             newDigiTweets.put("retweetcount", status.getRetweetedStatus().getRetweetCount() ); 
             newDigiTweets.put("createdat", status.getCreatedAt());
             newDigiTweets.put("retweetfavouritecount", status.getRetweetedStatus().getFavoriteCount());
@@ -187,12 +193,12 @@ public class DigitalTweets {
 	}
 	
 	
-	public static String cleanseTopicText(String tweetText) {
+	public static String transTweetText(String tweetText) {
 		
+		String strTopicText = TweetUtils.removeUrl(tweetText);
+		strTopicText = TweetUtils.removeUrl(strTopicText);
 		
-		StringUtils.
-		
-		return null;
+		return strTopicText;
 		
 	}
 
@@ -203,35 +209,9 @@ public class DigitalTweets {
 		
 		try (InputStream input = new FileInputStream("/Users/arunr/Documents/cdp/appconfig.properties")) {
 
-            
-
             // load a properties file
             prop.load(input);
 
-            // get the property value and print it out
-            System.out.println(prop.getProperty("db.url"));
-            System.out.println(prop.getProperty("db.name"));
-            System.out.println(prop.getProperty("db.collectioname"));
-            System.out.println(prop.getProperty("topicsbtachsize"));
-            
-            System.out.println(prop.getProperty("consumerkey"));
-            System.out.println(prop.getProperty("consumersecret"));
-            System.out.println(prop.getProperty("accesstoken"));
-            System.out.println(prop.getProperty("accesstokensecret"));
-            
-            System.out.println(prop.getProperty("topicstofilterarray"));
-            
-            /**
-             * db.url=localhost
-				db.name=twitterdb
-				db.collectioname=newdigitaltweets
-				topicsbtachsize=250
-				consumerkey=IX7TfROKOVOsCswRVTIEd0o5A
-				consumersecret=MrNR5InPyR27cpPf6hMa1NWN7UI13sTPSA9FsYcQ0TL9wH3L2S
-				accesstoken=812770747412267012-06YEyflcKR6GI7qQphavgkZi1GEhIAl
-				accesstokensecret=q6OlQseDON5UDLe1NYTHjJWq22LOBeAygN3MljjMjpk1b
-				topicstofilterarray=DigitalTransformation,DigitalBanking,DigitalWealth,JTBD,serverless,ApacheSpark,EnterpriseArchitecture,CloudComputing,cloudsecurity,AWS,REACTJS,APIManagement, Microservice, Graphdb,datalake,Kubernetes,apigateway,DeepLearning,Angular,openbanking,neuralnetwork,lambda,serverless,FINTECH,MachineLearning,Blockchain,Ethereum,DataScience, IOT, Neo4j,BigData,InternetofThings,INSURTECH,artificialintelligence,Kafka,WEALTHTECH,BehavioralEconomics,DevOps,DesignThinking,springboot,servicemesh,FINTECH,TextAnalytics,NaturalLanguageProcessing,NLP,CyberSecurity,Industry40,emergingtech,RPA,DIALOGFLOW,GRAPHQL,ComputerVision
-             */
             return prop;
         } catch (IOException ex) {
             ex.printStackTrace();
