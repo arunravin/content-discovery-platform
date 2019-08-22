@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 import java.util.StringJoiner;
@@ -41,6 +42,8 @@ public class DigitalTweets {
 	public static void main(String[] args) throws Exception {
 
 	    String[] topicsArray = appConfigProperties.getProperty("topicstofilterarray").split(",");
+	    
+	    System.out.println("Topics to Stream : "+Arrays.toString(topicsArray));
 	 
 		
 		ConfigurationBuilder cb = new ConfigurationBuilder();
@@ -89,18 +92,17 @@ public class DigitalTweets {
             String tweet = DataObjectFactory.getRawJSON(status);
             
             DBObject newDigiTweets = new BasicDBObject();
+            
+            
             newDigiTweets.put("ID", status.getId()); // Topic ID 
             newDigiTweets.put("user", status.getUser().getScreenName()); //User Name 
-           
             if (status.getRetweetedStatus().getText() != null) {
-            		newDigiTweets.put("tweettext", status.getRetweetedStatus().getText());
+            		 newDigiTweets.put("tweettext", status.getRetweetedStatus().getText());
             		 newDigiTweets.put("topictext",transTweetText(status.getRetweetedStatus().getText()) );
              } else {
             		newDigiTweets.put("tweettext", status.getText()); // Raw Tweet Textx
             		newDigiTweets.put("topictext",transTweetText(status.getText()));
              }
-            
-           
             newDigiTweets.put("retweetcount", status.getRetweetedStatus().getRetweetCount() ); 
             newDigiTweets.put("createdat", status.getCreatedAt());
             newDigiTweets.put("retweetfavouritecount", status.getRetweetedStatus().getFavoriteCount());
@@ -112,29 +114,32 @@ public class DigitalTweets {
             
             URLEntity[] urlEntities = status.getURLEntities();
             HashtagEntity[]  hashTagEntities = status.getHashtagEntities();
-            String strHashTag= "";
            
             int hashTagSize = hashTagEntities.length;
             
             StringJoiner sj = new StringJoiner("|");
             for (int i=0; i<hashTagSize;  i++) {
-            	
-            		
-		            	if(hashTagEntities[i]!=null) {
+                    	if(hashTagEntities[i]!=null) {
 		            		   sj.add(hashTagEntities[i].getText());
 		            	}
             }
             
-            System.out.println("***************************"+sj.toString());
             
          //   System.out.println(strHashTag);
             
             newDigiTweets.put("hashTags", sj.toString());
-            
-            newDigiTweets.put("expandedurl",urlEntities[0].getExpandedURL() );
+            newDigiTweets.put("expandedurl",  urlEntities[0].getExpandedURL() );
           //  digitialTweetCol.insert(newDigiTweets);
-          lstDigitalTweets.add(newDigiTweets) ;
+         
+            
+            //To Stop : Bitcointalk: , AdultNetwork , FreeTrial , HOSTKEY ,DirectIM , Scanner , Node: , Discounts , Udemyfree , Airdrops
+            //				, Airdropalert, Abuse , SCAMMERS , EthereumClassic
+            
+            lstDigitalTweets.add(newDigiTweets) ;
             	
+    //        System.out.println( newDigiTweets.get("topictext")  + "              "+ 
+    //        							sj.toString()  + "              "+ newDigiTweets.get("expandedurl"));
+            
             if ( lstDigitalTweets.size() >250) {
              		digitialTweetCol.insert(lstDigitalTweets);
              		System.out.println("250 Records inserted ..." );
@@ -196,7 +201,10 @@ public class DigitalTweets {
 	public static String transTweetText(String tweetText) {
 		
 		String strTopicText = TweetUtils.removeUrl(tweetText);
-		strTopicText = TweetUtils.removeUrl(strTopicText);
+	    strTopicText = TweetUtils.removeUserMentionsandHashTags(strTopicText,"@");
+	    strTopicText = TweetUtils.removeUserMentionsandHashTags(strTopicText,"#");
+		
+		//System.out.println("*&&*&&**&&*&*&*&*"+strTopicText);
 		
 		return strTopicText;
 		
@@ -207,8 +215,9 @@ public class DigitalTweets {
 		
 		Properties prop = new Properties();
 		
-		try (InputStream input = new FileInputStream("/Users/arunr/Documents/cdp/appconfig.properties")) {
+		//try (InputStream input = new FileInputStream("/Users/arunr/Documents/cdp/appconfig.properties")) {
 
+		try (InputStream input = new FileInputStream("src/main/resources/appconfig.properties")) {
             // load a properties file
             prop.load(input);
 
