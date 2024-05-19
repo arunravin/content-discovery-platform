@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/backup/jars/boilerpipe-1.2.0.jar"/>
+	<classpathentry kind="lib" path="C:/backup/jars/jsoup-1.14.3.jar"/>
+	<classpathentry kind="lib" path="C:/backup/jars/HikariCP-3.4.5.jar"/>
+	<classpathentry kind="lib" path="C:/backup/jars/postgresql-42.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/backup/jars/jackson-dataformat-csv-2.1.2.jar"/>
+	<classpathentry kind="lib" path="C:/backup/jars/opencsv-1.7.jar"/>
+	<classpathentry kind="lib" path="C:/backup/jars/xerces-2.9.0.jar"/>
+	<classpathentry kind="lib" path="C:/backup/jars/nekohtml-1.9.14.jar"/>
+	<classpathentry kind="lib" path="C:/backup/jars/slf4j.jar"/>
+	<classpathentry kind="lib" path="C:/backup/jars/logback.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
