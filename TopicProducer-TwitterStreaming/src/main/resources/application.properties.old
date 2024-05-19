@@ -1,0 +1,22 @@
+## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+#spring.datasource.url=jdbc:postgresql://localhost:5432/vikramDB
+#spring.datasource.username=vikramUSER
+#spring.datasource.password=vikramPASSWORD
+spring.datasource.url=jdbc:postgresql://localhost:5432/rise2earn
+spring.datasource.username=postgres
+spring.datasource.password=root
+spring.datasource.driverClassName=org.postgresql.Driver
+spring.jpa.show-sql=true
+
+
+## Hibernate Properties
+# The SQL dialect makes Hibernate generate better SQL for the chosen database
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+
+# Hibernate ddl auto (create, create-drop, validate, update)
+spring.jpa.hibernate.ddl-auto = validate
+
+logging.level.root = DEBUG
+
+
+

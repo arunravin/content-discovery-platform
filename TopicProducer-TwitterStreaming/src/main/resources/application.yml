@@ -1,0 +1,26 @@
+# Twitter Social Configs:
+server:
+    port: 8888
+spring:
+#  jpa:  
+#    hibernate:  
+#      ddl-auto: validate  
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect  
+#  datasource:  
+#    url: jdbc:postgresql://localhost:5432/rise2earn
+#    driverClassName: org.postgresql.Driver
+#    username: postgres  
+#    password: root
+  social:
+    twitter:
+      appId: IX7TfROKOVOsCswRVTIEd0o5A
+      appSecret: MrNR5InPyR27cpPf6hMa1NWN7UI13sTPSA9FsYcQ0TL9wH3L2S
+      accessToken: 812770747412267012-06YEyflcKR6GI7qQphavgkZi1GEhIAl
+      accessTokenSecret: q6OlQseDON5UDLe1NYTHjJWq22LOBeAygN3MljjMjpk1b
+      trackTopics: AWS,#DataMesh,#CloudNative,#thoughtmachine,#Temenos,#NonFungibleToken,#EdgeComputing,#eventdriven,#eventMesh,#LowLatency,#distributedSystems,#ChaosEngineering,#Akka,#API,#Serverless,#OpenBanking,#SAAS,#FutureOfWork,#DigitalBanking,#Azure,#GCP,#ArtificialIntelligence,#explainableai,#EmbeddedFinance, MicroService,#Kubernetes,#Kafka,Fintech,WealthTech,RegTech,DevOps,CyberSecurity,#BigData,DeepLearning,#MachineLearning,#DataScience,#FullStack,#DataLake
+      filterKeyWords: adult,bitcoin,webcam,fetish,sex,directcam,gracias,magazine,airdrop,digest,purchase,#adult,fuck,#Jobs,#Music,Daily!,
+  kafka:
+    bootstrap-servers: localhost:9092
+    batchSize: 50
+    template:
+      default-topic: tweets
