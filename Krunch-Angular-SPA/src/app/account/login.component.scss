@@ -1,0 +1,192 @@
+@import url('https://www.w3schools.com/w3css/4/w3.css');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+.button1 {background-color:#0c2461;
+           border-radius: 12px;
+           text-align: center;
+           display: inline-block;}
+
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  //background-image: url("https://itbrief.com.au/uploads/story/2020/11/17/GettyImages-1221154937__1_.jpg");
+//background-image: url("https://media-exp1.licdn.com/dms/image/C4D1BAQFXV91Y2H7ttA/company-background_10000/0/1547152841305?e=1610733600&v=beta&t=VbT5hF8D74pedAiDRVFzn2EBRL0Srp0gcybnQbpJTUc");
+ // background-image: url("https://dist.neo4j.com/wp-content/uploads/graph_vis_3d.jpg");
+ //Molecule background-image: url("https://s3.amazonaws.com/uploads.actionvfx.com/5dri00nr5o3829zzzokt8jn3j4rj?response-content-disposition=inline%3B%20filename%3D%226-Common-Nodes-for-Nuke-Beginners-Banner-compressor.jpg%22%3B%20filename%2A%3DUTF-8%27%276-Common-Nodes-for-Nuke-Beginners-Banner-compressor.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIOIO7FW777P44YRA%2F20210114%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210114T192724Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=da787e95294777a0d49a8207b8d6d0379f3d4d536521478dfa8a8289937946c7");
+ //background-image: url("https://uploads.actionvfx.com/file/spina/photo/479/large_6-Common-Nodes-for-Nuke-Beginners-image-1-compressor.jpg");
+ //background-image: url("https://www.luxoft.com/upload/uf/aba/Luxoft_blog_build_and_manage_your_2020_Data_Visualization_strategy.jpg");
+ //background-image: url("https://images.squarespace-cdn.com/content/v1/5d4cfd87082420000108b311/1566718849902-809OYSILCPJLAKT97XWE/ke17ZwdGBToddI8pDm48kNvT88LknE-K9M4pGNO0Iqd7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1USOFn4xF8vTWDNAUBm5ducQhX-V3oVjSmr829Rco4W2Uo49ZdOtO_QXox0_W7i2zEA/futuristic-technology-abstract-background-beautiful-footage-087637197_prevstill.jpeg?format=2500w");
+ //background-image: url("https://assets.weforum.org/article/image/large_jXmjlad5-rDyzmXOiidTsoGQkDjLG5vdTVE_J7TJV40.jpg");
+ background-image: url("../../assets/images/krunch3.jpeg");
+
+
+
+ min-height: 100%;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+
+
+form {border: 3px solid #f1f1f1;}
+ 
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #0c2461;
+  color: white;
+  //padding: 14px 20px;
+  margin: 8px 0;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+.lblcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+
+/*
+.wrapper {
+    width: 960px;
+    margin: 0 auto;
+  }
+  header {
+      width: 960px;
+      height: 100px;
+      background-color: white;
+  }
+  nav, section {
+    float: left;
+    vertical-align: top;
+    margin-top: 0%;
+    
+  }
+  nav {
+    width: 275px;
+    margin-right: 10px;
+
+  }
+  section {
+    width: 350px;
+    
+    background-color: #c7ecee;
+    
+  }
+  *, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  body {
+    background: #22a6b3;
+    color: #22a6b3;
+    font-family: Helvetica;
+    text-align: center;
+    margin: 0;
+  }
+  header,
+  nav,
+  section {
+    border: 1px solid rgba(255,255,255,0.8);
+    margin-bottom: 10px;
+    border-radius: 3px;
+  }
+  header {
+    padding: 20px 0;
+  }
+  nav, section {
+    padding: 20px 0;
+  }
+  
+  input[type=text] {
+    border: none;
+    border-bottom: 2px solid #2c3e50;
+  }
+
+  input[type=password] {
+    border: none;
+    border-bottom: 2px solid #2c3e50;
+  }
+
+  .button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  button-container {
+    display: flex;
+    align-items: center;
+    width: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+  }
+  **/

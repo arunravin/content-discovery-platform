@@ -1,0 +1,102 @@
+<div class="header-container"  style="width:250px; ">
+
+  <a (click)="toggleSidebar()" href="#" >
+    <nb-icon class="control-item" size="medium" icon="menu-2-outline"></nb-icon>
+    <nb-action class="control-item" ></nb-action>
+</a>
+&nbsp;&nbsp;
+<a href="https://www.linkedin.com/in/arunkumar-ravindran/" target="_blank">
+  <img width = 50px; height=50px;   class="rounded-circle" src="../../../../assets/images/climbingfuture1.jpg"/> 
+</a>
+
+&nbsp;
+<a class="logo" href="#" (click)="navigateHome()"><i>Krunch - <small><em>Everything is Connected..</em></small></i>  </a>
+ </div>
+
+
+<div class="header-container"  style="width:500px; ">
+
+<div >
+  <a class="logo1"  href="#" (click)="navigateMyTopics()">My Learning Journey </a>
+ 
+</div>
+
+<div >
+  <a class="logo2" href="#" (click)="navigateWordCloud()">Topics Word Cloud</a>
+
+  <!--
+    1).User's activities - How many he has shared so far , How many links he clicked , Likes and Dislikes
+    2).List of challenges / New Learnings 
+    3).Topics You liked 
+    4), What other people doing 
+  -->
+</div>
+
+
+<div >
+  <a class="logo3" href="#" (click)="navigateVideos()">My Videos</a>
+</div>
+
+
+<div >
+ 
+<!--
+  <a class="logo4"  (click)="feedback()" href="#" >
+    <img width = 50px; height=50px;   class="rounded-circle" src="../../../../assets/images/feedback1.jpg"/> 
+    <i> Your Feedback Matters.. </i></a>
+  -->
+</div>
+
+
+
+
+</div>
+
+<!--
+  <nb-select [selected]="currentTheme" (selectedChange)="changeTheme($event)" status="primary">
+    <nb-option *ngFor="let theme of themes" [value]="theme.value"> {{ theme.name }}</nb-option>
+  </nb-select>
+  -->
+
+
+<div class="header-container"  style="width:100px; align-content: center ">
+<!--
+  <a   (click)="feedback()" title="Your Feedback Matters .." href="#" >
+    <img width = 40px; height=40px;   class="rounded-circle" src="../../../../assets/images/feedback1.jpg"/> 
+    </a>
+    &nbsp; &nbsp;
+  -->
+  
+    <a href="https://twitter.com/krunchrsa" target="_blank">
+    <img width = 50px; height=50px;  src="../../../../assets/images/twitter-circled3.png"/> 
+  </a>
+  
+
+  
+   <!--
+
+  <a href="https://www.linkedin.com/in/arunkumar-ravindran/" target="_blank">
+    <img width = 50px; height=50px;  src="../../../../assets/images/linkedin-circled.png"/> 
+  </a>
+  -->
+ 
+  
+  <nb-actions size="small">
+
+   
+  
+   <!-- <nb-action class="control-item" icon="linkedin-outline"></nb-action> -->
+
+    
+    <nb-action class="user-action" *nbIsGranted="['view', 'user']" >
+      <nb-user   [nbContextMenu]="userMenu"
+                 [onlyPicture]=true
+                [picture]="user?.picture">
+      </nb-user>
+     </nb-action>
+  </nb-actions>
+
+  
+  
+
+</div>

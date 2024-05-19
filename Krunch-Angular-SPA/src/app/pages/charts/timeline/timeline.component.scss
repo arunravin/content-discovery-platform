@@ -1,0 +1,56 @@
+.topicDisplayStyle{
+    font-family: Open Sans, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.25;
+    color: #03314b;
+    margin-bottom: 1.5rem;
+}
+
+.p-timeline {
+    background-color: #1AA11A none !important; /* green */
+    border-color: #136e13 !important; /* green */
+}
+
+:host ::ng-deep .p-button {
+    margin-right: .5rem;
+}
+
+:host ::ng-deep .p-buttonset {
+    .p-button {
+        margin-right: 0;
+    }
+}
+
+:host ::ng-deep .p-card {
+    background-color:  #f1f2f6 !important;
+    }
+    
+
+:host ::ng-deep .sizes {
+    .button {
+        margin-bottom: .5rem;
+        display: block;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .p-button {
+        margin-bottom: .5rem;
+
+        &:not(.p-button-icon-only) {
+            display: flex;
+            width: 100%;
+        }
+    }
+
+    .p-buttonset {
+        .p-button {
+            margin-bottom: 0;
+        }
+    }
+}

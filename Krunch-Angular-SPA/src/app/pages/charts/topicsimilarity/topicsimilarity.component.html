@@ -1,0 +1,68 @@
+<p-treeTable #tt [value]="files" [columns]="cols" (onNodeExpand)="onNodeExpand($event)" 
+             [lazy]="true"  (onLazyLoad)="loadNodes($event)"
+             [scrollable]="true" scrollHeight="410px" dataKey="col.name" >
+      
+              <ng-template pTemplate="caption">
+                <div style="text-align: left ; color: black;">        
+                    Your Recommendations&nbsp;
+                    <a href="javascript:void(0);"  title="Refresh Recommendations" (click)="refreshNodes('ar')">
+                        <img
+                        width="30px;"
+                        height="30px;"
+                        class="rounded-circle"
+                        src="../../../../assets/images/synchronize--v1.png"
+                      />
+                       
+                    
+                    </a>
+                                </div>
+            </ng-template>
+     <!-- 
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+           
+            <th *ngFor="let col of cols">
+                {{col.header}}
+            </th>
+           
+        </tr>
+
+      
+        <tr>
+            <th *ngFor="let col of cols">
+                <input pInputText type="text" (input)="tt.filter($event.target.value, col.field)">
+            </th>
+        </tr>
+        
+    </ng-template>
+-->
+    <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+        <tr style="background: white;">
+            <td *ngFor="let col of cols; let i = index">
+                <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
+               
+                <span *ngIf="i == 0">
+                    <a href={{rowData.url}} target="_blank" ><strong >
+                    <span style="font-weight:bold; color:#03314b;
+                    font-style: normal;font-family: 'Open Sans' sans-serif;font-size: 14px;color:#03314b"> 
+                    {{rowData.name}}</span></strong>
+                    </a>
+                 </span > 
+                <span *ngIf="i == 1" style="font-weight:normal; color:#03314b;
+                font-style: normal;font-family: 'Open Sans' sans-serif;font-size: 14px;color:#03314b"> 
+                    {{rowData.type}}</span>
+               
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>            
+            <td [attr.colspan]="cols.length">Calculating Similarity/Recommendations Topics for you ...</td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <tr>        
+            <td [attr.colspan]="cols.length"></td>
+        </tr>
+    </ng-template>
+</p-treeTable>

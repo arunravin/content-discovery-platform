@@ -1,0 +1,237 @@
+<div class="card">
+  <div class="card-header">
+   
+    <span class="welcomeStyle">
+     <strong>{{this.displayName | titlecase}} , Welcome to Krunch</strong> 
+    </span>
+    <br>
+    <p></p>
+    <span class="messageStyle" >
+      Before we get started , please let us know about yourself so we can serve you better.
+
+    </span>
+   
+   <style ></style>
+    
+  </div>
+
+  <div class="card-body">
+
+
+      <div class=" row mb-2">
+        <label class="col-md-2 "
+               ></label>
+        <div class="col-md-8">
+          <label class="col-md-2 "
+          for="companyWebsiteId"><span class="labelText">Company Website</span></label>
+         
+        </div>
+      </div>
+
+      <div class=" row mb-2">
+        <label class="col-md-2 "
+              ></label>
+        <div class="col-md-8">
+         
+           &nbsp;&nbsp;&nbsp;
+          <input 
+                 id="companyWebsiteId"
+                 type="text"
+                 placeholder=""
+                 style="width: 400px;height: 30px; font-family: 'Open Sans' sans-serif; padding-left: 10px;"
+                
+               />
+         
+        
+        </div>
+      </div>
+
+      <div >
+  <!--
+        <div class=" row mb-2">
+          <label class="col-md-2 "
+                 for="emailId">Email</label>
+          <div class="col-md-8">
+            <input class="form-control"
+                   id="emailId"
+                   type="email"
+                   placeholder="Email (required)"
+                   formControlName="email"
+                   [ngClass]="{'is-invalid': emailMessage }" />
+            <span class="invalid-feedback">
+              {{ emailMessage }}
+            </span>
+          </div>
+        </div>
+-->
+<div class=" row mb-2">
+  <label class="col-md-2 "
+         ></label>
+  <div class="col-md-8">
+    <label class="col-md-2 "
+    for="companyWebsiteId"><span class="labelText">Confirm EMail</span></label>
+   
+  </div>
+</div>
+        <div class=" row mb-2">
+          <label class="col-md-2 "
+                 for="confirmEmailId"></label>
+          <div class="col-md-8">
+            
+           &nbsp; &nbsp; <input 
+                   id="confirmEmailId"
+                   [(ngModel)]="eMail"
+                   type="email"
+                   placeholder=""
+                   style="width: 400px;height: 30px; font-family: 'Open Sans' sans-serif;"
+                   
+                  />
+           
+          </div>
+        </div>
+      </div>
+
+<div class=" row mb-2">
+        <label class="col-md-2 "
+               ></label>
+        <div class="col-md-8">
+          <label class="col-md-2 "
+          for="companyWebsiteId"><span class="labelText">Profession</span></label>
+         
+        </div>
+</div>
+
+      <div class=" row mb-2">
+        
+        <label class="col-md-2 "
+               for="professionId"> </label>
+        <div class="col-md-8">
+
+
+        <div class="col-md-8">
+                 
+                  <button class="professionButton"   
+                   style="  border-color: orange; border-style: ridge;
+                          height: 30px;"            
+                          (click)="enableDisableRule('epr')" 
+                          [ngClass]="{'transparent' : !isEntrepreneur, 'blue': isEntrepreneur}">
+                   <span class="buttonTextStyle">Entrepreneur</span> 
+                  </button> &nbsp;
+                  <button style="  border-color: orange; border-style: ridge;
+                  height: 30px;"            
+                          (click)="enableDisableRule('cns')" 
+                          [ngClass]="{'transparent' : !isConsultant, 'blue': isConsultant}" 
+                          nbButton><span class="buttonTextStyle">Consultant</span></button> &nbsp;
+                  <button style="  border-color: orange; border-style: ridge;
+                  height: 30px;"            
+                          (click)="enableDisableRule('sa')" 
+                          [ngClass]="{'transparent' : !isStrategist_Analyst, 'blue': isStrategist_Analyst}" nbButton><span class="buttonTextStyle">Strategist/Analyst</span></button> &nbsp;
+                  <button style="  border-color: orange; border-style: ridge;
+                  height: 30px;"
+                             (click)="enableDisableRule('sm')" 
+                             [ngClass]="{'transparent' : !isSales_Marketing , 'blue': isSales_Marketing}"
+                             nbButton><span class="buttonTextStyle">Marketer/Sales</span></button><p></p> 
+                  <button style="  border-color: orange; border-style: ridge;
+                  height: 30px;" 
+                  (click)="enableDisableRule('ip')" 
+                  [ngClass]="{'transparent' : !isInvestmentProfessional , 'blue': isInvestmentProfessional}"
+                  nbButton><span class="buttonTextStyle">Investment Professional</span></button> &nbsp;
+                  <button style="  border-color: orange; border-style: ridge;
+                  height: 30px;" 
+                  (click)="enableDisableRule('ops')" 
+                  [ngClass]="{'transparent' : !isOperations , 'blue': isOperations}"
+                  nbButton><span class="buttonTextStyle">Operations</span></button> &nbsp;
+                  <button style="  border-color: orange; border-style: ridge;
+                  height: 30px;" 
+                   (click)="enableDisableRule('pm')" 
+                   [ngClass]="{'transparent' : !isProductManager_UX , 'blue': isProductManager_UX}"
+                  nbButton><span class="buttonTextStyle">Product Manager / UX</span></button> &nbsp;
+                  <button style="  border-color: orange; border-style: ridge;
+                  height: 30px;" 
+                      (click)="enableDisableRule('ot')" 
+                      [ngClass]="{'transparent' : !isOther , 'blue': isOther}"
+                  nbButton><span class="buttonTextStyle">Other</span></button>
+       </div>
+          
+        </div>
+      </div>
+
+
+      
+      <div class=" row mb-2">
+        <label class="col-md-2 "
+               for="professionId"></label>
+        <div class="col-md-8">
+          
+          <div class=" row mb-2">
+            &nbsp;&nbsp;&nbsp;
+            <label class="col-md-4 "><span class="labelGoalText">What's your immediate goal</span></label>
+            <div class="col-md-8">
+             
+             
+            </div>
+    </div>
+
+        <div class="col-md-8">
+          
+          <nb-button-group filled>
+            <button style="   border-color: orange; border-style: ridge;
+            height: 30px;" 
+                                  (click)="enableDisableforGoal('job')" 
+                                  [ngClass]="{'transparent' : !jobSeeking, 'blue': jobSeeking}"
+           
+            nbButton>
+            
+            <span class="buttonTextStyle">Looking for a Job</span></button> &nbsp;
+            
+            <button style=" border-color: orange; border-style: ridge;
+                        height: 30px;" 
+                          (click)="enableDisableforGoal('brand')" 
+                          [ngClass]="{'transparent' : !brandBuilding, 'blue': brandBuilding}"
+                        nbButton><span class="buttonTextStyle">Build my brand</span>
+            </button> 
+            &nbsp;
+            <button style="  border-color: orange; border-style: ridge;
+            height: 30px;" 
+                          (click)="enableDisableforGoal('social')" 
+                          [ngClass]="{'transparent' : !socialMedia, 'blue': socialMedia}"
+            nbButton><span class="buttonTextStyle">Social Media Content</span></button> &nbsp;
+            
+            <button style="  border-color: orange; border-style: ridge;
+            height: 30px;" (click)="enableDisableforGoal('meeting')" 
+                          [ngClass]="{'transparent' : !prepareForMeeting, 'blue': prepareForMeeting}"
+            nbButton><span class="buttonTextStyle">Preparing for a meeting</span></button> &nbsp;
+       </nb-button-group>
+ 
+                           
+        </div>
+
+         
+        </div>
+      </div>
+
+    
+
+     
+     <p>&nbsp;</p>
+      <div class=" row mb-4">
+        <div class="offset-md-2 col-md-8">
+          &nbsp; &nbsp;
+          <button class="btn btn-primary mr-4"               
+                  style="width:100px; background-color: transparent; "
+                  (click)="postPreferences()"  [disabled]="displayContinueButton"
+                 >
+           <span style="color: black;" ><span class="labelText">Continue</span></span> 
+          </button>
+          <button class="btn btn-primary "
+                  type="button"
+                  style=" background-color: transparent; "
+                  (click)="skipProfile()"
+                 >
+                  <span style="color: black;"><span class="labelText">I'll do this later</span></span> 
+          </button>
+        </div>
+      </div>
+    
+  </div>
+</div>

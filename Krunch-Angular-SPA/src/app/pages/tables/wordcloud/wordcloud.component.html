@@ -1,0 +1,47 @@
+              
+<span style=" padding-left: 625px; font-family: Open Sans, sans-serif ; font-size: 20px;
+color: #3498db;  font-weight: bold; align-content: left;">
+Trend <span style="font-size: 14px;">[{{this.parentSearchValue | titlecase}}]</span> 
+</span>
+<br>
+<span style=" padding-left: 280px; font-family: Open Sans, sans-serif ; font-size: 20px;
+color:#3498db;  font-weight: bold; align-content: left;">
+ <span class="material-icons" style="padding-top: 20px; font-size: 18px;"> people
+</span> &nbsp;Influencer's
+ </span>
+
+<span style=" padding-left: 500px; font-family: Open Sans, sans-serif ; font-size: 20px;
+color:#3498db;  font-weight: bold; align-content: left;">Organizations <span class="material-icons" style="padding-top: 5px;  font-size: 18px;">
+business
+</span>
+</span>
+<div class="ui-g-12" style="background: white; height: 700px; ">
+
+<div class="ui-g-6">
+<angular-tag-cloud
+[data]="wordCloudPersonData"
+(clicked)="logClicked($event)"
+[zoomOnHover]="zoomOnHoverOptions"
+[width]="options.width"
+[height]="options.height"
+[overflow]="options.overflow"  >
+</angular-tag-cloud>
+<!-- <button (click)="newData()">Get new Data from Observable</button>-->
+</div>
+
+<div class="ui-g-6">
+
+<angular-tag-cloud
+[data]="wordCloudData"
+(clicked)="logClicked($event)"
+[zoomOnHover]="zoomOnHoverOptions"
+[width]="options.width"
+[height]="options.height"
+[overflow]="options.overflow"
+>
+</angular-tag-cloud>
+</div>
+
+</div>
+
+

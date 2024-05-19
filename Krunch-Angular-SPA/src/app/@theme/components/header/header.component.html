@@ -1,0 +1,96 @@
+<div class="header-container" style="width: 75px">
+    
+  <a class="logo" style="font-size: 18px;font-family: 'Open Sans' sans-serif; 
+                  color: #30336b; font-style: oblique; " 
+              href="#" (click)="navigateHome()"> 
+              <img style="border-radius: 50%;"
+              width="50px;"
+              height="50px;"
+               src="../../../../assets/images/krtreeofknowledge.jpg"
+            />
+    <i>
+         Krunch
+    </i>
+  </a>
+
+
+
+  </div>
+
+  <div class="header-container" style="width:1000px; font-size: 12.8px;
+  font-family: 'Open Sans' sans-serif; font-weight: bolder; color:black">
+
+<!--
+    <span >
+  
+      <p-menubar [model]="dashBoardMenuitems"  (itemClick)="menuClicked($event)"
+          [style]="{ 'height': '40px' ,'float': 'right !important' ,'background-color' : 'white' ,
+           'border' : 'none' , 'color' :'red','font-family' : 'Open Sans , sans-serif', 'font-weight' : 'bold' }"  >
+      </p-menubar>
+     
+     </span>
+-->
+
+      <input #search class="search" [(ngModel)]="searchValue"  
+              style="height: 35px; width:300px; font-size: 15px; border-radius: 25px; 
+                        padding: 5px 10px;"  
+        type="text" nbInput status="primary" shape="rectangle"       
+      placeholder="Search"  (keydown.enter) =this.globalSearch(this.searchValue)
+      >
+      <nb-autocomplete #auto (selectedChange)="onSelectionChange($event)">
+        <nb-option style="font-size: 14px;  font-weight: 200; "
+          *ngFor="let option of filteredOptions$ | async" [value]="option">
+           {{ option }}
+         </nb-option>
+     </nb-autocomplete>
+
+    <span >
+        <p-menubar [model]="topicMenuitems"  (itemClick)="menuClicked($event)"
+         [style]="{ 'height': '40px' ,'float': 'right !important' ,'background-color' : 'white' ,
+          'border' : 'none' , 'color' :'red','font-family' : 'Open Sans , sans-serif', 
+          'font-weight' : 'bold' ,'padding' : '5px' }"  >
+        </p-menubar>
+      </span>
+        <span >
+        
+        <p-menubar [model]="topicDomainMenuitems"  (itemClick)="menuClicked($event)"
+        [style]="{ 'height': '40px' ,'float': 'right !important' ,'background-color' : 'white' ,
+        'border' : 'none' , 'font-family' : 'Open Sans , sans-serif', 'font-weight' : '800' }"  >
+      
+        </p-menubar>
+
+       
+    
+    </span>
+
+    <p-menubar [model]="disruptiveInnovationItems"  (itemClick)="menuClicked($event)"
+    [style]="{ 'height': '40px' ,'float': 'right !important' ,'background-color' : 'white' ,
+    'border' : 'none' , 'font-family' : 'Open Sans , sans-serif', 'font-weight' : '800' }"  >
+  
+    </p-menubar>
+ 
+  </div>
+
+
+<div class="header-container" style="width: 75px; align-content: right">
+  
+<!--
+  <a href="https://twitter.com/krunchrsa" target="_blank">
+    <img
+      width="50px;"
+      height="50px;"
+      src="../../../../assets/images/twitter--v1.png"
+    />
+  </a>
+-->
+<nb-actions size="medium">
+      <nb-action class="user-action" *nbIsGranted="['view', 'user']">
+      <nb-user
+        [nbContextMenu]="userMenu"
+        [onlyPicture]="true"
+        picture="../../../../assets/images/user1j.jpg">
+      </nb-user>
+    </nb-action>
+</nb-actions>
+
+</div>

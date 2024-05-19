@@ -1,0 +1,23 @@
+<p-dataView #dv1  [value]="topTrends"  layout="list"  [rows]="20"   [paginator]="false"
+ loadingIcon="pi pi-spinner" emptyMessage="Loading .."  styleClass="./topTrends.component.scss"
+[lazy]="false"  [totalRecords]="20">
+<ng-template let-topic pTemplate="listItem">
+<div class="ui-g-12">
+  <div class="ui-g-9 topic-ogTitle">
+    <span class="topicTitleStyle">
+          <a href="{{ topic.url }}" target="_blank" (click)="topicClicked(topic.url)" >
+          <span style="color: black">{{topic.name }}</span>
+          </a>
+    </span>
+</div>
+<div class="ui-g-3" style="text-align: left ;background-color: white;">
+      <img
+      id="user-image"
+      style="width: 80px; height:70px;"
+      src="{{ topic.type }}"
+      onerror="this.onerror=null;this.src='../../../../assets/images/default.jpg';"
+      />
+</div>
+</div>
+</ng-template>
+</p-dataView>

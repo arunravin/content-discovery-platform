@@ -1,0 +1,145 @@
+
+    
+<nb-card class="col-md-12 col-lg-12 col-xxxl-12">
+    <nb-card-body>
+      <nb-stepper orientation="horizontal">
+        <nb-step [label]="labelOne">
+          <ng-template #labelOne>Engine </ng-template>
+          
+          <div class="header-container" >
+
+            <input class="logo" ng-maxlength="25"
+            style="height: 50px; width: 200px; max-width: 200px; border: none; border-bottom: 1px solid black;" 
+            nbInput
+            [(ngModel)]="engineName"
+            placeholder="Engine Name" >
+                    
+              
+                 
+          <textarea class="logo" rows="3" 
+          style="height: 50px; width: 500px; border: none; border-bottom: 1px solid black;" 
+          matInput
+          [(ngModel)]="engineDescription"
+          shape="round"  
+          placeholder="Engine description"></textarea>
+          
+             
+     
+          </div>
+
+      
+          <div style="height: 40px;"></div>
+
+          <div class="logo" style="padding:40px; border: black solid 0.5px; ">
+          <mat-chip-list #chipList aria-label="Topics selection">
+            <mat-chip style="background-color: #f5f6fa;" *ngFor="let topic of topics1" [selectable]="selectable"
+                     [removable]="removable" (removed)="remove(topic)">
+                  <span style=" color: black;  font-size: 12px;">
+                          {{topic.name}}
+                    </span>
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input style="width: 75px; height: 40px;"  placeholder="New Topic..."
+                   [matChipInputFor]="chipList"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   [matChipInputAddOnBlur]="addOnBlur"
+                   (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
+        </div>
+     
+
+
+           <button style="height: 30px;" nbButton nbStepperNext>next</button>
+        </nb-step>
+        <nb-step [label]="labelTwo">
+
+          <ng-template #labelTwo>Preferences</ng-template>
+        
+          <div class="header-container" >
+          
+            <mat-select  class="logo" style="color: black; border-bottom: solid black 1px;" 
+            placeholder="Select Personas" 
+            [(ngModel)]="selectedPersonas"   multiple>
+              <mat-option class="mat-primary" 
+              *ngFor="let persona of personaTypes" [value]="persona">
+              <!--<mat-icon [ngStyle]="{'color': 'blue'}">home</mat-icon>-->
+              {{persona}}</mat-option>
+            </mat-select>
+       
+            <mat-select class="logo" style="border-bottom: solid black 1px;" placeholder="Topics" [(ngModel)]="selectedTopics"   multiple>
+                <mat-option class="mat-primary" *ngFor="let topic of  topicsList" [value]="topic">{{topic}}</mat-option>
+              </mat-select>
+           
+
+            <mat-select class="logo" style="border-bottom: solid black 1px;" placeholder="Notifications"  [(ngModel)]="selectedNotifications"  multiple>
+                <mat-option class="mat-primary" *ngFor="let notification of notificationsList" [value]="notification">{{notification}}</mat-option>
+              </mat-select>
+            </div>
+       <!--
+          <input class="logo"   style="height: 30px; " nbInput
+          placeholder="Form Picker"
+          [nbDatepicker]="formpicker2">
+      
+              <nb-datepicker #formpicker2></nb-datepicker> 
+                -->
+
+                <span style="padding-bottom: 20px;"></span>
+          <button style="height: 30px; width: 30px;" nbButton nbStepperPrevious>prev</button>
+          <button style="height: 30px; width: 30px;" nbButton nbStepperNext>next</button>
+        </nb-step>
+        <nb-step label="Submit">
+            
+          
+
+          <div class="card">
+            <h5>{{engineName}}</h5>
+            <p-splitter [style]="{'height': '300px'}" [panelSizes]="[20,80]" [minSizes]="[10,0]" styleClass="p-mb-5">
+                <ng-template>
+                    <div class="p-col p-d-flex p-ai-center p-jc-center">
+                     
+                      <span style="font-size: 11px;padding-bottom: 20px;">
+                      UserPersona :   {{selectedPersonas}}
+                      </span>
+                      <p></p>
+                      <span style="font-size: 11px;padding-bottom: 20px;">
+                        Topics Interested in :  {{selectedTopics}}
+                      </span>
+                      <p></p>
+                      <span style="font-size: 11px;padding-bottom: 20px;">
+                        Preffered Notifications :  {{selectedNotifications}}
+                      </span>
+                    </div>
+                </ng-template>
+                <ng-template>
+                    <p-splitter layout="vertical" [panelSizes]="[15,85]">
+                        <ng-template>
+                            <div style="flex-grow: 1;" class="p-d-flex p-ai-center p-jc-center">
+                              {{engineDescription}}
+                            </div>
+                        </ng-template>
+                        <ng-template>
+                            <p-splitter [panelSizes]="[20,80]">
+                               
+                                <ng-template>
+                                    <div class="p-col p-d-flex p-ai-center p-jc-center">
+                                      <span style="font-size: 11px;" *ngFor="let topic of topics1" > 
+                                        {{topic.name}}
+                                      </span>
+                                    </div>
+                                </ng-template>
+                            </p-splitter>
+                        </ng-template>
+                    </p-splitter>
+                </ng-template>
+            </p-splitter>
+        </div>
+
+
+
+          <button style="height: 30px;" nbButton nbStepperPrevious>Prev</button>
+        </nb-step>
+     
+ 
+      </nb-stepper>
+    </nb-card-body>
+  </nb-card>

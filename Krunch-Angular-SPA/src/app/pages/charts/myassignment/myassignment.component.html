@@ -1,0 +1,53 @@
+<p>myassignment works!</p>
+    
+<nb-card class="col-md-12 col-lg-12 col-xxxl-12">
+    <nb-card-body>
+      <nb-stepper orientation="horizontal">
+        <nb-step [label]="labelOne">
+          <ng-template #labelOne>Job Metadata</ng-template>
+          
+          <div class="header-container" >
+
+            <input class="logo" style="height: 30px; " nbInput
+            placeholder="Job Name" >
+                    
+                <input class="logo"  style="height: 30px; " nbInput
+                placeholder="Job Type">
+                    
+
+                    <input class="logo"   style="height: 30px; " nbInput
+                    placeholder="Assign To" >
+                     
+     
+          </div>
+          
+            
+         
+
+          <button  nbButton disabled nbStepperNext>prev</button>
+          <button nbButton nbStepperNext>next</button>
+        </nb-step>
+        <nb-step [label]="labelTwo">
+
+          <ng-template #labelTwo>Assign</ng-template>
+          <h3>Development in Progress #2</h3>
+       <!--
+          <input class="logo"   style="height: 30px; " nbInput
+          placeholder="Form Picker"
+          [nbDatepicker]="formpicker2">
+      
+              <nb-datepicker #formpicker2></nb-datepicker> 
+                -->
+          <button nbButton nbStepperPrevious>prev</button>
+          <button nbButton nbStepperNext>next</button>
+        </nb-step>
+        <nb-step label="Submit">
+          <h3>Development in Progress #3</h3>
+          <button nbButton nbStepperPrevious>prev</button>
+          <button nbButton nbStepperNext>next</button>
+        </nb-step>
+     
+
+      </nb-stepper>
+    </nb-card-body>
+  </nb-card>

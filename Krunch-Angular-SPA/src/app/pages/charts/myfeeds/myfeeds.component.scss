@@ -1,0 +1,17 @@
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+
+$nb-themes: nb-register-theme((
+  text-basic-color: color-basic-800, // <- we setting color-basic-800 instead of color-basic-1000
+  text-disabled-color: color-basic-600, // <- and color-basic-600 as instead of color-basic-500
+  tabset-tab-text-transform	: 'lowercase',
+), default, default);
+
+:host ::ng-deep nb-stepper .step-content {
+  text-align: center;
+
+  button {
+    cursor: pointer;
+    margin: 0.5rem;
+  }
+}

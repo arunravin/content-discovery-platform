@@ -1,0 +1,46 @@
+<span style=" padding-left: 600px; font-size: larger; font-weight: bold; color: #0097e6; align-content: left;">
+  Trend
+ </span>
+ <br>
+ <span style=" padding-left: 525px; font-size: larger; font-weight: bold; color: #0097e6; align-content: left;">
+   Influencer's & Organizations 
+ </span>
+<div class="ui-g-12" style="background: white; height: 700px; ">
+  
+ 
+ 
+  <div class="ui-g-6">
+  
+   <br>
+  
+    <angular-tag-cloud
+      [data]="wordCloudPersonData"
+      (clicked)="logClicked($event)"
+      [zoomOnHover]="zoomOnHoverOptions"
+      [width]="options.width"
+      [height]="options.height"
+      [overflow]="options.overflow"  >
+    </angular-tag-cloud>
+   <!-- <button (click)="newData()">Get new Data from Observable</button>-->
+  </div>
+
+  <div class="ui-g-6">
+   
+   <br>
+  
+      <angular-tag-cloud
+        [data]="wordCloudData"
+        (clicked)="logClicked($event)"
+       [zoomOnHover]="zoomOnHoverOptions"
+         [width]="options.width"
+        [height]="options.height"
+        [overflow]="options.overflow"
+      >
+      </angular-tag-cloud>
+  </div>
+   
+      
+   
+</div>
+
+

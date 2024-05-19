@@ -1,0 +1,22 @@
+
+<p-timeline [value]="events1" align="alternate">
+    <ng-template pTemplate="marker" let-event>
+        <span class="custom-marker p-shadow-2" [style.backgroundColor]="event.color">
+          
+            <i class="control-icon ion ion-ios-search" ></i>
+        </span>
+    </ng-template>
+    <ng-template pTemplate="content" let-event>
+        
+        <p-card [header]="event.status" [subheader]="event.date" >
+            <img *ngIf="event.image" [src]="'assets/showcase/images/demo/product/' + event.image" [alt]="event.name" width="200" class="p-shadow-2" />
+            <span class="topicDisplayStyle" > 
+                <p class="topicDisplayStyle">My Searches : {{event.mytopics}}
+                    <br><br>
+                    Trending Searches : {{event.trendingtopics}}  </p>
+            </span>
+          </p-card>
+
+        
+    </ng-template>
+</p-timeline>

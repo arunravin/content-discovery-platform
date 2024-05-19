@@ -1,0 +1,344 @@
+
+
+
+  <nb-tabset class="tabset" (changeTab)="beforeChange($event)">
+    <nb-tab tabTitle="Relevancy" tabId="0" tabIcon="bulb"  active=true > </nb-tab>
+    <nb-tab tabTitle="Popular" tabId="1" tabIcon="star" > </nb-tab>
+    <nb-tab tabTitle="Latest" tabId="2" tabIcon="flash" > </nb-tab>
+    <nb-tab tabTitle="Persons & Companies" tabId="3" tabIcon="people"> 
+     
+    </nb-tab>
+   <!-- 
+    <nb-tab tabTitle="Videos " tabId="4" tabIcon="video"> </nb-tab>
+    <nb-tab tabTitle="Videos & Events" tabId="4" tabIcon="video"> </nb-tab>
+    <nb-tab tabTitle="Books & Courses" tabId="5" tabIcon="map-outline"> </nb-tab>
+    -->
+  </nb-tabset>
+
+
+<div class="ui-g-12">
+
+<div *ngIf="showTopicDataView" class="ui-g-7">
+  
+  
+  <div class="ui-g-12" style="background-color: #f5f6fa; border-width:1px;">
+    <p-dataView
+      #dv
+      [value]="topics"
+      layout="list"
+      [rows]="25"
+      [paginator]="true"
+      paginatorPosition="both"
+      paginatorDropdownScrollHeight="500px"
+      [sortField]="sortField"
+      [sortOrder]="sortOrder"
+      [filterBy]="filterField"
+      loadingIcon="pi pi-spinner"
+      emptyMessage="Loading .."
+      styleClass="./topicdataview.component.scss"
+      [lazy]="false"
+      (onLazyLoad)="loadComments($event)"
+      [totalRecords]="totalRecords"
+    >
+      <!-- Table Header #fdfcfa-->
+      <p-header>
+        <div class="ui-g">
+          <div class="header-container" style="width: 800px">
+            <div class="example-section">
+              <mat-radio-group
+                color="primary"
+                [(ngModel)]="labelPosition"
+                (change)="matchFilterChange($event)"
+              >
+                <mat-radio-button class="example-margin" value="contains"
+                  >Contains</mat-radio-button
+                >
+                <mat-radio-button class="example-margin" value="startsWith"
+                  >Starts With</mat-radio-button
+                >
+              </mat-radio-group>
+            </div>
+
+            <div class="example-section1">
+              <input
+                type="search1"
+                required minlength="3"
+                status="primary"
+                style="width: 200px;height: 40px; font-family: 'Open Sans' sans-serif; "
+                placeholder="Advanced Filter"
+                [(ngModel)]="drillDownTextValue"
+                (keyup)="dv.filter($event.target.value, labelPosition)"
+              />
+            </div>
+
+            <div class="example-section1">
+                <nb-select 
+                style="padding-left: 50px;"
+                status="primary"
+                (selectedChange)="rangeFilterChange($event)"
+                 placeholder="Select Field"
+                [(ngModel)]="selectedItemNgModel"   >
+                    <nb-option value="rating">Rating</nb-option>
+                    <nb-option value="popularity">Popularity</nb-option>
+                    <nb-option value="relevancy">Relevancy</nb-option>
+                    <nb-option value="recency">Recency-Days</nb-option>
+                    <!--<nb-option value="createdAt">CreatedDate</nb-option>-->
+                  
+                  </nb-select>
+
+                  <nb-select 
+                        style="padding-left: 15px; padding-right: 15px;"
+                        status="primary"
+                        placeholder="Operator"
+                        (selectedChange)="operatorChange($event)"
+                        [(ngModel)]="selectedOperator" 
+                 >
+                    <nb-option value="gte">&gt;=</nb-option>
+                    <nb-option value="lte">&lt;=</nb-option>
+                    <nb-option value="=">=</nb-option>
+                  </nb-select>
+
+                  <div class="example-section1">
+                    <input
+                      type="search2"
+                      nbInput
+                      type="text" 
+                      status="primary"
+                      style="width: 100px;height: 40px; font-family: 'Open Sans' sans-serif; "
+                      placeholder=""
+                      [(ngModel)]="rangeText"
+                      (keyup)="dv.filter($event.target.value, rangeOperator)"
+                    />
+                  </div>
+            <!--
+              
+                (selectedChange)="changeTheme($event)"
+                <select matNativeControl required class="select" > 
+                  <option value="createdDate" >CreatedDate</option>
+                  <option value="popularity">Popularity</option>
+                
+                </select>
+            -->
+            </div>
+
+          </div>
+        </div>
+
+
+            
+
+        <span class="topicCurrentSelection" >
+          {{ currentSelection|titlecase}}
+        </span>
+      </p-header>
+
+      <!-- List view -->
+
+      <ng-template let-topic pTemplate="listItem">
+        <div class="ui-g" style=" border-style: ridge;">
+          <div class="ui-g-2" style="text-align: left ;background-color: white;">
+            <img id="user-image"    style="width: 150px"  src="{{ topic.ogImage }}"
+              onerror="this.onerror=null;this.src='../../../../assets/images/default.jpg';"/>
+          </div>
+               
+           <div class="ui-g-10" style="text-align: left; height: 100% ; 
+                       background-color: #ffffff; padding-top: 0px; 
+                      ">
+            <div class="ui-g-12 topic-ogTitle">
+              
+                <span class="topicTitleStyle">
+                  <a href="{{ topic.ogUrl }}" target="_blank" (click)="topicClicked(topic.ogUrl)">
+                      <u style="color: black">{{
+                        topic.ogTitle
+                      }}</u>
+                    
+                  </a>
+                </span>
+              </div>
+            <div class="ui-g-12 topic-ogDescription">
+              <span class="topicDescriptionStyle">
+                <small>{{ topic.ogDescription }}</small>
+              </span>
+              <p></p>
+              
+              <div class="ui-g-12" style="background-color: white; height: 50px; text-align: center;  ">
+
+                    <div class="ui-g-3">
+                 
+                          <share-buttons
+                          [theme]="'circles-dark'"
+                          (opened)="shareButtonClicked($event, topic.ogUrl)"
+                          [include]="['twitter', 'whatsapp', 'linkedin']"
+                          [show]="9"
+                          [size]="-11"
+                          [url]="topic.ogUrl"
+                          [title]="topic.ogTitle"
+                          [description]="topic.ogTitle + ' @krunchrsa'"
+                          [image]="topic.ogImage"
+                          [autoSetMeta]="false">
+                        </share-buttons>
+                    
+                  </div>
+
+                  <div class="ui-g-6" style="padding-top: 15px; ">
+                   
+                   <span style="font-family: 'Open Sans', sans-serif ; font-size: 12px; 
+                                color: red;  ">
+                   
+                   <i style="color: red;" class="fa fa-fire {{topic.trendingStatus}} " aria-hidden="true"></i>
+                   {{topic.popularity}} Krunches
+                  </span>     
+                  
+                  <span style="font-family: Open Sans, sans-serif ; font-size: 12px;
+                         color: red; padding-left: 15px; ">
+                         
+                     {{topic.timeInterval}} 
+                  </span>    
+                  
+                  <span   *ngIf="topic.rating===5" style="font-family: Open Sans, sans-serif ; font-size: 12px; 
+                            color: red; padding-left: 20px; ">
+                  
+                    <!--<i style="color: red;" class="fa fa-star fa-fw " aria-hidden="true"></i>-->
+                    <i style="color: red;" class="fa fa-star fa-fw " aria-hidden="true"></i>
+                   
+                    <i style="color: red;" class="fa fa-star fa-fw " aria-hidden="true"></i>
+                    <i style="color: red;" class="fa fa-star fa-fw " aria-hidden="true"></i>
+                    <i style="color: red;" class="fa fa-star fa-fw " aria-hidden="true"></i>
+                    <i style="color: red;" class="fa fa-star fa-fw " aria-hidden="true"></i>
+                  
+                  </span>    
+             
+                     <span   *ngIf="topic.rating===4" style="font-family: Open Sans, sans-serif ; font-size: 12px; 
+                            color: red; padding-left: 20px; ">
+                  
+                    <i style="color: red;" class="fa fa-star fa-fw " aria-hidden="true"></i>
+                    <i style="color: red;" class="fa fa-star fa-fw " aria-hidden="true"></i>
+                    <i style="color: red;" class="fa fa-star fa-fw " aria-hidden="true"></i>
+                    <i style="color: red;" class="fa fa-star fa-fw " aria-hidden="true"></i>
+                 
+                  </span>    
+
+                     <span   *ngIf="topic.rating===3" style="font-family: Open Sans, sans-serif ; font-size: 12px; 
+                            color: red; padding-left: 20px; ">
+                  
+                    <i style="color: red;" class="fa fa-star fa-fw " aria-hidden="true"></i>
+                    <i style="color: red;" class="fa fa-star fa-fw " aria-hidden="true"></i>
+                    <i style="color: red;" class="fa fa-star fa-fw " aria-hidden="true"></i>
+                         
+                  </span> 
+
+                   <span   *ngIf="topic.rating===2" style="font-family: Open Sans, sans-serif ; font-size: 12px; 
+                            color: red; padding-left: 20px; ">
+                  
+                    <i style="color: red;" class="fa fa-star fa-fw " aria-hidden="true"></i>
+                    <i style="color: red;" class="fa fa-star fa-fw " aria-hidden="true"></i>
+                         
+                  </span>  
+                                        
+                  </div>
+
+                  <div class="ui-g-3" style="padding-top: 15px;;">
+
+                    <a
+              href="javascript:void(0);"
+              title="Add to My Reading List "
+              (click)="addToQueue(topic.ogUrl)"
+            >
+              <i class="material-icons" style="font-size: 20px; color:  #00acee"
+                >add_to_queue</i
+              >
+            </a>
+            &nbsp;
+            <a
+              href="javascript:void(0);"
+              title="Great info "
+              (click)="thumbUp(topic.ogUrl)"
+            >
+              <i class="material-icons" style="font-size: 20px; color: #25d366"
+                >thumb_up_alt</i
+              >
+            </a>
+            &nbsp;
+            <a
+              href="javascript:void(0);"
+              title="Not Relevant"
+              (click)="thumbDown(topic.ogUrl)"
+            >
+              <i class="material-icons" style="font-size: 20px; color: #0072b1"
+                >thumb_down</i
+              >
+            </a>
+        
+                                        
+                  </div>
+
+
+              </div>
+
+            </div>
+
+          </div>
+         <!-- <hr class="ui-widget-content" style="border-top: 0 ;" />-->
+        
+        </div>
+       
+      </ng-template>
+
+      </p-dataView>
+  </div>
+
+</div>
+
+
+
+<div class="ui-g-12" *ngIf="showTopicCloud">
+
+  <ngx-topicwordcloud [parentSearchValue]="this.childSearchValue"></ngx-topicwordcloud>
+
+
+</div>
+
+<div class="ui-g-12" *ngIf="showTopicDataView" style="width: 25px;" >
+
+</div>                 
+              
+<div *ngIf="showTopicDataView" class="ui-g-4" style="background-color: white;">
+
+ 
+
+  <span style=" padding-left: 125px; font-family: Open Sans, sans-serif ; font-size: 20px;
+color:black;  font-weight: bold; align-content: left;">
+<span class="material-icons md-48" style="padding-top: 25px;">
+trending_up 
+</span>
+Top Trends 
+</span>
+
+<p-dataView #dv1  [value]="topTrends"  layout="list"  [rows]="20"   [paginator]="false"
+ loadingIcon="pi pi-spinner" emptyMessage="Loading .."  styleClass="./topTrends.component.scss"
+[lazy]="false"  [totalRecords]="20">
+<ng-template let-topic pTemplate="listItem">
+<div class="ui-g-12">
+  <div class="ui-g-9 topic-ogTitle">
+    <span class="topicTitleStyle">
+          <a href="{{ topic.url }}" target="_blank" (click)="topicClicked(topic.url)" >
+          <span style="color: black">{{topic.name }}</span>
+          </a>
+    </span>
+</div>
+<div class="ui-g-3" style="text-align: left ;background-color: white;">
+      <img
+      id="user-image"
+      style="width: 80px; height:70px;"
+      src="{{ topic.type }}"
+      onerror="this.onerror=null;this.src='../../../../assets/images/default.jpg';"
+      />
+</div>
+</div>
+</ng-template>
+</p-dataView>
+ <!-- <ngx-toptrends [parentSearchValue]="this.childSearchValue"></ngx-toptrends>-->
+ 
+</div>
+
+</div>

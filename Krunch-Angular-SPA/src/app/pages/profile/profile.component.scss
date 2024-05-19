@@ -1,0 +1,94 @@
+
+.welcomeStyle{
+    font-family: Open Sans, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.25;
+    color: black;
+    margin-bottom: 1.5rem;
+}
+
+.transparent {
+    background-color: transparent;
+}
+
+.blue {
+    background-color: #00cec9;
+}
+.myClass{
+    color : red;
+  }
+
+professionButton:focus{
+    background-color: black; 
+}
+
+.button {
+    transition-duration: 0.4s;
+  }
+  
+  .button:focus {
+    background-color: #4CAF50; /* Green */
+    color: red;
+  }
+
+.messageStyle{
+    font-family: Open Sans, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.25;
+    color: black;
+    padding-top: 20px;
+    margin-bottom: 1.5rem;
+}
+
+.buttonTextStyle{
+    font-family: Open Sans, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.25;
+    color: black;
+    
+}
+
+.labelText{
+    font-family: Open Sans, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.25;
+    color: black;
+    margin-bottom: 1.5rem;
+}
+
+.labelGoalText{
+    font-family: Open Sans, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1.25;
+    color: black;
+    margin-bottom: 1.5rem;
+}
+
+.alert {
+    padding: 20px;
+    background-color: #f44336; /* Red */
+    color: white;
+    margin-bottom: 15px;
+  }
+  
+  /* The close button */
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  /* When moving the mouse over the close button */
+  .closebtn:hover {
+    color: black;
+  }

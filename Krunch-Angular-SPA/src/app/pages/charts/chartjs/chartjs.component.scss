@@ -1,0 +1,35 @@
+@import '../../../@theme/styles/themes';
+
+@include nb-install-component() {
+
+  .classname{
+    max-height: 100%;
+      overflow-y: hidden;
+  }
+
+ 
+
+  ngx-chartjs-pie,
+  ngx-chartjs-bar,
+  ngx-chartjs-line,
+  ngx-chartjs-multiple-xaxis,
+  ngx-chartjs-bar-horizontal,
+  ngx-chartjs-radar {
+    display: block;
+    height: nb-theme(card-height-small);
+    width: 100%;
+
+    ::ng-deep chart {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+
+}
+
+::ng-deep .classname{
+  max-height: 100%;
+    overflow-y: hidden;
+}

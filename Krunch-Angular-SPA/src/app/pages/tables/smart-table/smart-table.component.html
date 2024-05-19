@@ -1,0 +1,67 @@
+<p-dataView #dv [value]="topics" filterBy="ogTitle" layout=grid
+[rows]="10" [paginator]="true" paginatorPosition="top"
+loadingIcon="pi pi-spinner" emptyMessage ="Loading .." 
+[lazy]="false" (onLazyLoad)="loadVideos($event)" [totalRecords]="totalRecords">
+    <!-- Table Header -->
+    <p-header>
+        <div class="ui-g">
+        <div class="ui-g-9" style="text-align: left; font-size: 25px;">
+          <input #search class="search" type="text" nbInput status="primary" shape="rectangle" 
+          fieldSize="medium" placeholder="Videos Search.. "  (keydown.enter) ="onChangeTopic(search.value)">
+      
+          &nbsp;&nbsp;&nbsp;       &nbsp;&nbsp;&nbsp;  
+
+            <input #search1 class="search1" 
+            type="text" nbInput status="info" shape="rectangle" fieldSize="medium" 
+              pInputText placeholder="Drill down results "
+             (keyup)="dv.filter($event.target.value)">
+                  
+
+            
+            </div>
+            
+        </div>
+    </p-header>
+
+    <!-- List view -->
+
+   
+
+    <!-- Grid view -->
+    <ng-template let-topic pTemplate="gridItem">
+            <div style="padding:3px;align-content: flex-start; " class="ui-g-12 ui-md-6">
+                <p-panel header={{topic.ogTitle}} [style]="{'text-align':'left'}">
+                   
+                    <youtube-player 
+                    [videoId]="topic.ogUrl" 
+                    suggestedQuality="highres" 
+                    [height]="300" 
+                    [width]="400" 
+                    [startSeconds]="4"
+                    [endSeconds]="8">
+                  </youtube-player>
+                  <br>
+                  <div class="topic-ogTitle"  width="500" height="500">
+                      <span style="font-weight:normal; font-size:12px;">
+                          <b>{{topic.ogTitle}}
+                          </b>
+                       </span>
+                  </div>
+
+                  <div style="font-weight:normal; font-size:12px; "  width="500" height="500">
+                    <a href="javascript:void(0);" title="Earn $2 Algo" >
+                      Earn $8 Algo 
+                   </a>
+                    - 1 Min
+                </div>
+                  
+                      
+                </p-panel>
+            </div>
+        </ng-template>
+</p-dataView> 
+
+
+
+
+
