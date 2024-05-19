@@ -1,0 +1,42 @@
+ <config  
+xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'  
+xmlns='http://www.ehcache.org/v3'  
+xmlns:jsr107='http://www.ehcache.org/v3/jsr107'>  
+<ehcache>  
+<diskStore path="java.io.tmpdir" />  
+<defaultCache maxElementsInMemory="20"   
+            eternal="true"  
+            overflowToDisk="false"   
+            timeToLiveSeconds="1200" />  
+    <cache name="demoCache"   
+            maxElementsInMemory="40"  
+            eternal="false"   
+            overflowToDisk="false"   
+            timeToLiveSeconds="86400" />  
+      <cache name="refreshedCache"   
+            maxElementsInMemory="20"  
+            eternal="false"   
+            overflowToDisk="false"   
+            timeToLiveSeconds="86400" />  
+      <cache name="entitiesCache"   
+            maxElementsInMemory="50"  
+            eternal="false"   
+            overflowToDisk="false"   
+            timeToLiveSeconds="86400" />  
+        <cache name="trendsCache"   
+            maxElementsInMemory="75"  
+            eternal="false"   
+            overflowToDisk="false"   
+            timeToLiveSeconds="86400" />  
+      <cache name="personsCache"   
+            maxElementsInMemory="50"  
+            eternal="false"   
+            overflowToDisk="false"   
+            timeToLiveSeconds="86400" /> 
+      <cache name="homePageCache"   
+            maxElementsInMemory="20"  
+            eternal="false"   
+            overflowToDisk="false"   
+            timeToLiveSeconds="86400" /> 
+</ehcache>  
+</config> 
