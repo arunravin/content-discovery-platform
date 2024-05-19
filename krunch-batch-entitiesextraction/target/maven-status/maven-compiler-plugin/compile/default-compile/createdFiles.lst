@@ -1,0 +1,4 @@
+com\learn2rise\db\DataSource.class
+com\learn2rise\nlp\NERPipeline.class
+com\learn2rise\nlp\TopicsSentenceSegmentation.class
+com\learn2rise\nlp\StanfordCoreNLPEnglishTestApp.class
