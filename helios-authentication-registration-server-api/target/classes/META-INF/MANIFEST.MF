@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: Arunkumar Ravindran
+Build-Jdk: 17
+Implementation-Title: helios_security_iam
+Implementation-Version: 0.1.6
+Implementation-Vendor-Id: org.helios
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/helios_security_iam
+Created-By: Maven Integration for Eclipse
+
