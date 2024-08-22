@@ -8,23 +8,23 @@ Content discovery platform delivers personalized content to understand the lates
 	java -jar -Xmx128m E:\learnrise\appjars\TopicRetriever.jar
 
 
-3.Input CSV file generation Query . 
-4.Generated CSV will be fed into the Web Content Extraction program .
-5. Web Content extractor will fetch the data and insert into raw topic data table
-6.NLP Content extraction program will get the raw data , extract NLP entities ( Organization , Individuals etc ..) , map the data to a common model and insert into tables.
-java -jar -Xmx256m E:\learnrise\appjars\ExtractURLContent.jar
-
-7).TS_Vector will be genrated using the query for Topic searches.
-      UPDATE "TopicEntityData" SET
-    "TSV" = setweight(to_tsvector(coalesce("TransformedText",'')), 'A') || 
-    		setweight(to_tsvector(coalesce("TopicOgTitle",'')), 'B') ||
-    		setweight(to_tsvector(coalesce("TopicOgDescription",'')), 'C')
-    where "TSV" is null
-
-
-8.Start Topic Search App to query the data based on keywords.
-
-9. Us Intelligent reporting app to generate weekly / daily reports based on your custom algorithm.
+	3.Input CSV file generation Query . 
+	4.Generated CSV will be fed into the Web Content Extraction program .
+	5. Web Content extractor will fetch the data and insert into raw topic data table
+	6.NLP Content extraction program will get the raw data , extract NLP entities ( Organization , Individuals etc ..) , map the data to a common model and insert into tables.
+	java -jar -Xmx256m E:\learnrise\appjars\ExtractURLContent.jar
+	
+	7).TS_Vector will be genrated using the query for Topic searches.
+	      UPDATE "TopicEntityData" SET
+	    "TSV" = setweight(to_tsvector(coalesce("TransformedText",'')), 'A') || 
+	    		setweight(to_tsvector(coalesce("TopicOgTitle",'')), 'B') ||
+	    		setweight(to_tsvector(coalesce("TopicOgDescription",'')), 'C')
+	    where "TSV" is null
+	
+	
+	8.Start Topic Search App to query the data based on keywords.
+	
+	9. Us Intelligent reporting app to generate weekly / daily reports based on your custom algorithm.
 
 COPY (Select count("Id") as countno,"TransformedText" ,"TopicUrl" 
   from "Topics"
