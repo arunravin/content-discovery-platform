@@ -1,11 +1,11 @@
 # content-discovery-platform
 Content discovery platform delivers personalized content to understand the latest trends around Digital Transformation Business and Technologies.
 
-1.Topic Producer :
-java -jar -Xmx256m E:\learnrise\twitterStreamingSparkKafkaDemo-master\producer\target\TopicProducer-1.0.jar
-
-2.Topic Consumer and insert batch data into Topics table .
-java -jar -Xmx128m E:\learnrise\appjars\TopicRetriever.jar
+	1.Topic Producer :
+	java -jar -Xmx256m E:\learnrise\twitterStreamingSparkKafkaDemo-master\producer\target\TopicProducer-1.0.jar
+	
+	2.Topic Consumer and insert batch data into Topics table .
+	java -jar -Xmx128m E:\learnrise\appjars\TopicRetriever.jar
 
 
 3.Input CSV file generation Query . 
